@@ -20,7 +20,9 @@
 
     ```shell
     kubectl get nodes
-    kubectl describe nodes/<<NodeId>>
+    kubectl describe nodes/gke-eduak8sdev-default-pool-33575829-vzgw
+    kubectl <<ACCION>> <<TIPO_RECURSO>>/<<ID-RECURSO>>
+    kubectl <<ACCION>> <<TIPO_RECURSO>> <<ID-RECURSO>>
     ```
 
 1. Desplegar lpsa

@@ -1,8 +1,0 @@
-server:
-  port: 9999
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health

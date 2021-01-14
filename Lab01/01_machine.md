@@ -35,14 +35,14 @@
 
     ```console
     gcloud projects list
-    gcloud projects create educadev
-    gcloud config set project educadev
+    gcloud projects create educalabs
+    gcloud config set project educalabs
     ```
 1. To enable billing
 
 1. Default region and zones
     ```console
-    gcloud compute project-info describe --project educadev
+    gcloud compute project-info describe --project educalabs
     ```
     * Finds keys:  
         * google-compute-default-region
@@ -108,6 +108,6 @@
 
 1. Login VM
     ```console
-    ssh -i ./credentials/educaKeys mzegarra@34.70.164.154
+    ssh -i ./credentials/educaKeys mzegarra@34.68.209.230
     ```
 

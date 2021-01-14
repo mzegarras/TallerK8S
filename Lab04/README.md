@@ -1,3 +1,15 @@
+## Conectarse al K8s
+1. Conectarse al cluster
+
+    ```shell
+    gcloud auth login
+    
+    gcloud container clusters create educadev01 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.16
+
+    sudo yum install kubectl
+
+    kubectl version
+
 1. Pod shell
     ```bash
     kubectl run my-shell -i --tty --image ubuntu -- bash

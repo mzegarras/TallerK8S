@@ -1,14 +1,24 @@
 ## Conectarse al K8s
-1. Conectarse al cluster
+1. Clonar repositorio
+    ```shell
+    sudo dnf install git -y
+    git clone https://github.com/mzegarras/TallerK8S.git
+    cd ~/TallerK8S/Lab04/
+    ```
+
+1. Crear y conectarse al cluster
 
     ```shell
     gcloud auth login
-    
+
     gcloud container clusters create educadev01 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.16
 
     sudo yum install kubectl
-
+    
     kubectl version
+    ```
+
+
 
 1. Pod shell
     ```bash

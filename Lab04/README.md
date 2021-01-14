@@ -1,6 +1,9 @@
 ## Conectarse al K8s
 1. Clonar repositorio
     ```shell
+    gcloud projects list
+    gcloud config set project educalabs
+
     sudo dnf install git -y
     git clone https://github.com/mzegarras/TallerK8S.git
     cd ~/TallerK8S/Lab04/

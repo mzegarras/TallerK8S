@@ -1,6 +1,7 @@
 ## Conectarse al K8s
 1. Clonar repositorio
     ```shell
+    gcloud auth login
     gcloud projects list
     gcloud config set project educalabs
 
@@ -12,8 +13,6 @@
 1. Crear y conectarse al cluster
 
     ```shell
-    gcloud auth login
-
     gcloud container clusters create educadev01 --num-nodes=3 --machine-type=e2-small --zone us-east4-c --cluster-version 1.16
 
     sudo yum install kubectl
@@ -102,6 +101,20 @@
     kubectl apply -f 02_deployment_2.yml
 
     ```
+1. <span style="color:blue">Lab01-Crear</span>
+    ```bash
+    docker run -p 8080:8085 mzegarra/websimple:1.0.0
+    docker run -p 8080:8085 mzegarra/websimple:2.0.0
+    docker run -p 8080:8085 mzegarra/websimple:3.0.0
+    docker run -p 8080:8085 mzegarra/websimple
+    ``` 
+
+    * **Crear un pod websimple:1.0.0**
+        * Interactiva
+        * Declarativa
+    * **Crear un deployment websimple:2.0.0**
+        * Interactiva
+        * Declarativa
 
 1. Escalar réplicas
     ```bash

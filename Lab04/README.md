@@ -120,6 +120,8 @@
 
 1. Escalar réplicas
     ```bash
+    kubectl apply -f 02_deployment_2.yml
+    
     kubectl scale deployment mscustomers01 --replicas=1
 
     kubectl scale deployment mscustomers01 --replicas=0

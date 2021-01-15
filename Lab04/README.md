@@ -141,7 +141,10 @@
     
     kubectl apply -f 02_deployment_3.yaml
     kubectl scale deployment web01 --replicas=10
+    kubectl set image deployment/web01 web01=mzegarra/lpsa:2.0
 
+
+    
     kubectl rollout status deployment/web01
     kubectl set image deployment/web01 web01=mzegarra/lpsa:2.0
 

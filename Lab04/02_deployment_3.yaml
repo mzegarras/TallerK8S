@@ -6,12 +6,15 @@ spec:
   selector:
     matchLabels:
       app: web01
-  revisionHistoryLimit: 2
   strategy:
     type: Recreate
+    #type: RollingUpdate
     # rollingUpdate:
     #   maxSurge: 1
     #   maxUnavailable: 0
+    # rollingUpdate:
+    #     maxSurge: 25%
+    #     maxUnavailable: 25%  
   replicas: 2
   template:
     metadata:
@@ -25,10 +28,3 @@ spec:
           ports:
             - name: http-api
               containerPort: 80
-
-
-              
-#revisionHistoryLimit: Indicamos cuántos ReplicaSets antiguos deseamos conservar, para poder realizar rollback a estados anteriores. Por defecto, es 10.
-#strategy: Indica el modo en que se realiza una actualización del Deployment: 
-    #Recreate: elimina los Pods antiguos y crea los nuevos; 
-    #RollingUpdate: actualiza los Pods a la nueva versión.

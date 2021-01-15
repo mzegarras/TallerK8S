@@ -101,7 +101,9 @@
     kubectl apply -f 02_deployment_2.yml
 
     ```
-1. <span style="color:blue">Lab01-Crear</span>
+1. ### **Lab01-Crear**
+
+
     ```bash
     docker run -p 8080:8085 mzegarra/websimple:1.0.0
     docker run -p 8080:8085 mzegarra/websimple:2.0.0

@@ -120,7 +120,7 @@
 
 1. Escalar réplicas
     ```bash
-    kubectl apply -f 02_deployment_2.yml
+    kubectl apply -f 02_deployment_2.yaml
     
     kubectl scale deployment mscustomers01 --replicas=1
 
@@ -166,7 +166,7 @@
 
 1. Expose service
     ```bash
-
+    kubectl apply -f 02_deployment_3.yaml
     kubectl expose deployments web01 --port=9060 --target-port=80 --type=LoadBalancer
     kubectl get svc -w
     kubectl delete svc/web01

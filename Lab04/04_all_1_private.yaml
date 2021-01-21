@@ -33,7 +33,6 @@ spec:
     metadata:
       labels:
         app: web01
-        env: dev
     spec:
       containers:
         - name: web01

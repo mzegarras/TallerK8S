@@ -13,7 +13,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
-              name: app-config-1
+              name: app-config-5
               # Specify the key associated with the value
               key: special.how
   restartPolicy: Never

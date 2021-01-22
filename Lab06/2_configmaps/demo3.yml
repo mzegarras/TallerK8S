@@ -9,5 +9,5 @@ spec:
       command: [ "/bin/sh", "-c", "env" ]
       envFrom:
       - configMapRef:
-          name: special-config
+          name: app-config
   restartPolicy: Never

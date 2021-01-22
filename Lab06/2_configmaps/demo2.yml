@@ -11,11 +11,11 @@ spec:
         - name: SPECIAL_LEVEL_KEY
           valueFrom:
             configMapKeyRef:
-              name: special-config
+              name: app-config-5
               key: special.how
-        - name: LOG_LEVEL
+        - name: LIVES
           valueFrom:
             configMapKeyRef:
-              name: env-config
-              key: log_level
+              name: app-config-4
+              key: lives
   restartPolicy: Never

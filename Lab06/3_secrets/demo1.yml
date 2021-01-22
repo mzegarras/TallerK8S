@@ -7,12 +7,12 @@ spec:
   - name: mycontainer
     image: redis
     env:
-      - name: USER_ADMIN
+      - name: SECRET_USERNAME
         valueFrom:
           secretKeyRef:
             name: mysecret
             key: username
-      - name: USER_PWD
+      - name: SECRET_PASSWORD
         valueFrom:
           secretKeyRef:
             name: mysecret

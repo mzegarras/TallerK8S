@@ -48,7 +48,20 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: tcp-api
-              containerPort: 5672
+              containerPort: 27017
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secrets
+                  key: username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secrets
+                  key: password
+            - name: MONGO_INITDB_DATABASE
+              value: shop              
           resources:
             limits:
               cpu: 350m
@@ -76,16 +89,3 @@ spec:
             periodSeconds: 15
             successThreshold: 1
             timeoutSeconds: 15
-          env:
-            - name: MONGO_INITDB_ROOT_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: mongo-secrets
-                  key: username
-            - name: MONGO_INITDB_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mongo-secrets
-                  key: password
-            - name: MONGO_INITDB_DATABASE
-              value: shop

@@ -15,7 +15,7 @@ content-type: application/json
 
 {
 	"FirstName": "Juan",
-	"LastName": "Perez1"
+	"LastName": "Perez221"
 }
 
 ### DELETE customer

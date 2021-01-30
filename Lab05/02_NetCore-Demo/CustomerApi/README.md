@@ -50,9 +50,12 @@
 
 1. Stress
 
-fortio load -c 100 -qps 0 -n 20 -loglevel Warning http://34.86.184.61:8080/Customer
+fortio load -c 100 -qps 0 -n 20 -loglevel Warning http://35.199.53.185:8080/Customer
 
-siege -r 2 -c 200 -d 1  -v -H "X-Api-Force-Sync: false" --content-type 'application/json' "http://34.86.184.61:8080/Customer POST {
+siege -r 2 -c 200 -d 1  -v -H "X-Api-Force-Sync: false" --content-type 'application/json' "http://35.199.53.185:8080/Customer POST {
 	\"FirstName\": \"Juan\",
 	\"LastName\": \"Perez1\"
 }"
+
+202 Accept
+

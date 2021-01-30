@@ -1,4 +1,4 @@
-@SERVER=http://localhost:8080
+@SERVER=http://35.199.53.185:8080
 //@SERVER=https://localhost:5001
 
 ### LIST

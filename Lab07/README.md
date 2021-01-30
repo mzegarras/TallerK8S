@@ -84,6 +84,8 @@
     kubectl port-forward service/configserver 8888:8888
 
     curl http://localhost:8888/clientes/default
+    curl http://localhost:8888/encrypt -H 'Content-Type: text/plain' -d 'appdev'
+    
     ```
 
 1. Configurations settings

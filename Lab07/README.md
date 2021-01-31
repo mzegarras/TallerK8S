@@ -191,7 +191,6 @@
     kubectl apply -f ./06-proxyreverse/lab04.yaml
     ```
 
-
 ## 10. Pruebas
 
 1. 200 Peticiones de consulta de clientes
@@ -201,7 +200,7 @@
 
 1. 40 transacciones / r=request, c=connections
     ```bash
-    siege -r 100 -c 2 -d 1  -v -H "X-Api-Force-Sync: false" --content-type 'application/json' "http://130.211.221.110:8080/customers POST {
+    siege -r 100 -c 2 -d 1  -v -H "X-Api-Force-Sync: false" --content-type 'application/json' "http://35.221.52.214:8080/customers POST {
     \"customer\": {
         \"nombre\": \"name1\",
         \"paterno\": \"lastname1222\",

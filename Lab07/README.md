@@ -233,14 +233,14 @@
 
 1. Crear bus service
     ```bash
-    kubectl apply -f bus.yaml
+    kubectl apply -f ./04-bus/bus.yaml
     ```
 
-    ### Redis as service
-    1. [AWS - SQS] (https://aws.amazon.com/sqs/)
-    1. [AWS - SNS] (https://aws.amazon.com/sns/)
-    1. [Azure - Service  BUS] (https://docs.microsoft.com/en-us/azure/service-bus-messaging/)
-    1. [GCP - Pub-sub] (https://cloud.google.com/pubsub/docs/overview)
+    ### Bus as service
+    * [AWS - SQS] (https://aws.amazon.com/sqs/)
+    * [AWS - SNS] (https://aws.amazon.com/sns/)
+    * [Azure - Service  BUS] (https://docs.microsoft.com/en-us/azure/service-bus-messaging/)
+    * [GCP - Pub-sub] (https://cloud.google.com/pubsub/docs/overview)
     
 
 1. Crear customers

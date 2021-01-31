@@ -68,33 +68,10 @@
 
 
 
+
+
+
 ### Desplegando en kubernetes
-
-    
-
-1. Crear secret git credentials
-
-    ```
-
-
-
-
-
-1. Instalar config-server
-    ```bash
-    kubectl apply -f config-server.yaml
-    ```
-
-1. Test config-server
-    ```bash
-    kubectl get pods
-    kubectl get svc
-    kubectl port-forward service/configserver 8888:8888
-
-    curl http://localhost:8888/clientes/default
-    curl http://localhost:8888/encrypt -H 'Content-Type: text/plain' -d 'appdev'
-    curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d 'crifrado-paso-previo'
-    ```
 
 1. Configurations settings
     ```bash

@@ -68,8 +68,10 @@
 
 # Labels
 
+1. Etiquetas recomandas
+
 |Clave 	                        |Descripción	|Ejemplo 	|Tipo   	|
-|---	                        |---	|---	|---	|---	|
+|---	                        |---	|---	|---	|
 |app.kubernetes.io/name   	    |El nombre de la aplicación   	|mysql   	|String   	|
 |app.kubernetes.io/instance   	|Un nombre único que identifique la instancia de la aplicación   	|wordpress-abcxzy   	|   	String   	|
 |app.kubernetes.io/version   	|La versión actual de la aplicación (ej., la versión semántica, cadena hash de revisión, etc.)   	|5.7.21   	|String   	|

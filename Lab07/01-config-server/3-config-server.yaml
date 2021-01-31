@@ -2,12 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: configserver
+  labels:
+      app.kubernetes.io/name: configserver
+      app.kubernetes.io/instance: configserver
+      app.kubernetes.io/version: "1.0.0"
+      app.kubernetes.io/component: microservice
+      app.kubernetes.io/part-of: configserver
+      app.kubernetes.io/managed-by: helm   
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: configserver
-      version: v1
+      app.kubernetes.io/name: configserver
+      app.kubernetes.io/version: "1.0.0"
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -15,8 +22,8 @@ spec:
   template:
     metadata:
       labels:
-        app: configserver
-        version: v1
+        app.kubernetes.io/name: configserver
+        app.kubernetes.io/version: "1.0.0"
     spec:
       containers:
       - name: configserver
@@ -69,12 +76,18 @@ kind: Service
 metadata:
   name: configserver
   labels:
-    app: configserver
+      app.kubernetes.io/name: configserver
+      app.kubernetes.io/instance: configserver
+      app.kubernetes.io/version: "1.0.0"
+      app.kubernetes.io/component: service
+      app.kubernetes.io/part-of: configserver
+      app.kubernetes.io/managed-by: helm 
 spec:
   ports:
     - port: 8888
       targetPort: 8888
   selector:
-    app: configserver
+      app.kubernetes.io/name: configserver
+      app.kubernetes.io/version: "1.0.0"
   type: ClusterIP
 ---

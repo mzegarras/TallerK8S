@@ -37,22 +37,22 @@
 
 1. Crear secret git credentials
     ```bash
-    kubectl apply -f 01-gitcredentials.yaml
+    kubectl apply -f ./01-config-server/1-gitcredentials.yaml
     ```    
 
 1. Crear config maps
     ```bash
-    kubectl apply -f 01-configserver-settings-bad.yaml
+    kubectl apply -f ./01-config-server/2-configserver-settings-bad.yaml
     kubectl describe configmaps configserver-settings-bad
 
-    kubectl apply -f 01-configserver-settings-ok.yaml
+    kubectl apply -f ./01-config-server/2-configserver-settings-ok.yaml
     kubectl describe configMaps/configserver-settings
     kubectl describe secrets/configserver-jks
     ```
 
 1. Desplegar config-server
     ```bash
-    kubectl apply -f 01-config-server.yaml
+    kubectl apply -f ./01-config-server/3-config-server.yaml
     ```
 
 1. Test config-server
@@ -66,10 +66,27 @@
     curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d 'crifrado-paso-previo'
     ```
 
+# Labels
 
+|Clave 	                        |Descripción	|Ejemplo 	|Tipo   	|
+|---	                        |---	|---	|---	|---	|
+|app.kubernetes.io/name   	    |El nombre de la aplicación   	|mysql   	|String   	|
+|app.kubernetes.io/instance   	|Un nombre único que identifique la instancia de la aplicación   	|wordpress-abcxzy   	|   	String   	|
+|app.kubernetes.io/version   	|La versión actual de la aplicación (ej., la versión semántica, cadena hash de revisión, etc.)   	|5.7.21   	|String   	|
+|app.kubernetes.io/component   	|El componente dentro de la arquitectura   	|database   	|String   	|
+|app.kubernetes.io/part-of   	|El nombre de una aplicación de nivel superior de la cual es parte esta aplicación  	|wordpress   	|String   	|
+|app.kubernetes.io/managed-by  	|La herramienta usada para gestionar la operativa de una aplicación   	|helm   	|String   	|
 
+* [Referencia y ejemplos](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/common-labels/)
 
+1. Consultar objetos
 
+# Listar todos los objetos de "app.kubernetes.io/part-of=configserver"
+
+kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver"
+
+# Listar todos los objetos de "app.kubernetes.io/part-of=configserver" y "app.kubernetes.io/managed-by=helm"
+kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver,app.kubernetes.io/managed-by=helm"
 
 ### Desplegando en kubernetes
 

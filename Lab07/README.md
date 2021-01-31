@@ -92,9 +92,27 @@
     ```
 
 
+## 5. Crear base de datos con volume
+
+1. Crear volume
+    ```bash
+    kubectl apply -f ./02-db/1-volume.yaml
+    ```
 
 
+1. Crear credentials
+    ```bash
+    kubectl apply -f ./02-db/2-secrets.yaml
+    ```
+1. Crear deployment + service
+    ```bash
+    kubectl apply -f ./02-db/3-db.yaml
+    ```
+1. Database como servicio
 
+    * [AzureSQL](https://azure.microsoft.com/es-es/services/sql-database/)
+    * [CloudSQL](https://cloud.google.com/sql/docs/mysql?hl=es-419)
+    * [RDS](https://aws.amazon.com/rds/)
 
 
 

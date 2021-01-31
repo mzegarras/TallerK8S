@@ -68,28 +68,31 @@
 
 # Labels
 
-1. Etiquetas recomandas
+1. [Etiquetas recomandas](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/common-labels/)
 
-|Clave 	                        |Descripción	|Ejemplo 	|Tipo   	|
-|:---	                        |:---	        |:---	    |:---:	    |
-|app.kubernetes.io/name   	    |El nombre de la aplicación   	|mysql   	|String   	|
-|app.kubernetes.io/instance   	|Un nombre único que identifique la instancia de la aplicación   	|wordpress-abcxzy   	|   	String   	|
-|app.kubernetes.io/version   	|La versión actual de la aplicación (ej., la versión semántica, cadena hash de revisión, etc.)   	|5.7.21   	|String   	|
-|app.kubernetes.io/component   	|El componente dentro de la arquitectura   	|database   	|String   	|
-|app.kubernetes.io/part-of   	|El nombre de una aplicación de nivel superior de la cual es parte esta aplicación  	|wordpress   	|String   	|
-|app.kubernetes.io/managed-by  	|La herramienta usada para gestionar la operativa de una aplicación   	|helm   	|String   	|
-
-
-1. [Referencia y ejemplos](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/common-labels/)
+    |Clave 	                        |Descripción	|Ejemplo 	|Tipo   	|
+    |:---	                        |:---	        |:---	    |:---:	    |
+    |app.kubernetes.io/name   	    |El nombre de la aplicación   	|mysql   	|String   	|
+    |app.kubernetes.io/instance   	|Un nombre único que identifique la instancia de la aplicación   	|wordpress-abcxzy   	|   	String   	|
+    |app.kubernetes.io/version   	|La versión actual de la aplicación (ej., la versión semántica, cadena hash de revisión, etc.)   	|5.7.21   	|String   	|
+    |app.kubernetes.io/component   	|El componente dentro de la arquitectura   	|database   	|String   	|
+    |app.kubernetes.io/part-of   	|El nombre de una aplicación de nivel superior de la cual es parte esta aplicación  	|wordpress   	|String   	|
+    |app.kubernetes.io/managed-by  	|La herramienta usada para gestionar la operativa de una aplicación   	|helm   	|String   	|
 
 1. Consultar objetos
 
-# Listar todos los objetos de "app.kubernetes.io/part-of=configserver"
+* Listar todos los objetos de "app.kubernetes.io/part-of=configserver"
+    ```bash
+    kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver"
+    ```
 
-kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver"
+* Listar todos los objetos de "app.kubernetes.io/part-of=configserver" y "app.kubernetes.io/managed-by=helm"
+    ```bash
+    kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver,app.kubernetes.io/managed-by=helm"
+    ```
 
-# Listar todos los objetos de "app.kubernetes.io/part-of=configserver" y "app.kubernetes.io/managed-by=helm"
-kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver,app.kubernetes.io/managed-by=helm"
+
+
 
 ### Desplegando en kubernetes
 

@@ -15,6 +15,7 @@ spec:
     targetPort: 3306
   selector:
     app.kubernetes.io/name: db
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -39,22 +40,21 @@ spec:
         app.kubernetes.io/name: db
     spec:
       containers:
-      - image: mysql:5.6.50
-        name: db
-        imagePullPolicy: Always
-        resources:
-          requests:
-            cpu: 200m
-            memory: 256Mi
-          limits:
-            cpu: 400m
-            memory: 512Mi #256Mi
-        env:
+        - image: mysql:5.7
+          name: db       
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3306
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi #256Mi
+          env:
           - name: MYSQL_ROOT_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mysql-credentials
-                key: root_password   
+            value: password
           - name: MYSQL_DATABASE
             value: db01
           - name: MYSQL_USER
@@ -66,14 +66,12 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: mysql-credentials
-                key: db_pwd                
-        ports:
-        - containerPort: 3306
-          name: db
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+                key: db_pwd                          
+          volumeMounts:
+          - name: mysql-data
+            mountPath: "/var/lib/mysql"
+            subPath: "mysql"
       volumes:
-        - name: mysql-persistent-storage
+        - name: mysql-data
           persistentVolumeClaim:
-            claimName: mysql-pv-claim          
+            claimName: mysql-pv-claim        

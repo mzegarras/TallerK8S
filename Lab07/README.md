@@ -99,7 +99,6 @@
     kubectl apply -f ./02-db/1-volume.yaml
     ```
 
-
 1. Crear credentials
     ```bash
     kubectl apply -f ./02-db/2-secrets.yaml

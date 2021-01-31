@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: configserver-settings
+data:
+    GIT_URI: "https://github.com/mzegarras/tci-config-dev.git"
+    KEYSTORE_ALIAS: "YOU_CONFIG_SERVER_KEY"
+    #KEYSTORE_PWD: "YOU_KEYSTORE_PASSWORD"
+    #KEYSTORE_SECRET: "YOU_KEYSTORE_PASSWORD"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: configserver-jks
+type: Opaque
+data:
+    KEYSTORE_PWD: "WU9VX0tFWVNUT1JFX1BBU1NXT1JE"
+    KEYSTORE_SECRET: "WU9VX0tFWVNUT1JFX1BBU1NXT1JE"

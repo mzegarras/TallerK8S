@@ -1,12 +1,17 @@
-### Tools
+# Desplegando containers kubernetes
+
+## 1. Tools
 1. [siege](https://github.com/JoeDog/siege) - Stress tool
 1. [fortio](https://github.com/fortio/fortio) - Stress tool
 
+## 2. Arquitectura
 
-### Desplegando en kubernetes
+![title](https://raw.githubusercontent.com/mzegarras/TallerK8S/main/Lab07/Arquitectura.png)
+
+
+## 3. Config server
 
 1. Generar certificado
-
     ```bash
     keytool -genkeypair -alias YOU_CONFIG_SERVER_KEY \
        -keyalg RSA -keysize 4096 -sigalg SHA512withRSA \
@@ -15,61 +20,64 @@
        -storepass YOU_KEYSTORE_PASSWORD
     ```
 
-1. Crear secrets con jks
+1. Crear un secret para jks
 
     ```bash
-    traceroute www.googleapis.com
     kubectl create secret generic configserver-key --from-file=config-server.jks
     kubectl get secret
     kubectl describe secret/configserver-key
     ```
 
-1. Convertir base64 - (https://www.base64decode.org/)
-
+1. Convertir [base64](https://www.base64decode.org/) credenciales
     ```bash
     echo -n 'mzegarra@gmail.com' | base64
-    echo -n 'password-githhub' | base64
+    echo -n 'git-credentials' | base64
     echo 'cGFzc3dvcmQ=' | base64 --decode
     ```
 
 1. Crear secret git credentials
     ```bash
-    cat <<EOF | kubectl apply -f -
-    apiVersion: "v1"
-    kind: "Secret"
-    metadata:
-        name: "git-credentials"
-    type: "Opaque"
-    data:
-        username: "bXplZ2FycmFAZ21haWwuY29t"
-        password: "password-githhub-base64"
-    EOF
-    ```
-
+    kubectl apply -f 01-gitcredentials.yaml
+    ```    
 
 1. Crear config maps
     ```bash
-    cat <<EOF | kubectl apply -f -
-    apiVersion: "v1"
-    kind: "ConfigMap"
-    metadata:
-        name: "configserver-settings"
-        labels:
-            app: "configserver"
-    data:
-        GIT_URI: "https://github.com/mzegarras/tci-config-dev.git"
-        KEYSTORE_PWD: "YOU_KEYSTORE_PASSWORD"
-        KEYSTORE_ALIAS: "YOU_CONFIG_SERVER_KEY"
-        KEYSTORE_SECRET: "YOU_KEYSTORE_PASSWORD"    
-    EOF
+    kubectl apply -f 01-configserver-settings-bad.yaml
+    kubectl describe configmaps configserver-settings-bad
+
+    kubectl apply -f 01-configserver-settings-ok.yaml
+    kubectl describe configMaps/configserver-settings
+    kubectl describe secrets/configserver-jks
     ```
 
+1. Desplegar config-server
     ```bash
-    
-    kubectl get configMaps
-    kubectl describe configMaps/configserver-settings
-    kubectl edit configMaps/configserver-settings
+    kubectl apply -f 01-config-server.yaml
     ```
+
+1. Test config-server
+    ```bash
+    kubectl get pods
+    kubectl get svc
+    kubectl port-forward service/configserver 8888:8888
+
+    curl http://localhost:8888/clientes/default
+    curl http://localhost:8888/encrypt -H 'Content-Type: text/plain' -d 'password'
+    curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d 'crifrado-paso-previo'
+    ```
+
+
+
+### Desplegando en kubernetes
+
+    
+
+1. Crear secret git credentials
+
+    ```
+
+
+
 
 
 1. Instalar config-server
@@ -85,7 +93,7 @@
 
     curl http://localhost:8888/clientes/default
     curl http://localhost:8888/encrypt -H 'Content-Type: text/plain' -d 'appdev'
-    
+    curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d 'crifrado-paso-previo'
     ```
 
 1. Configurations settings

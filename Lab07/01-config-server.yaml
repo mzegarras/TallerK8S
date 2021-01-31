@@ -49,6 +49,16 @@ spec:
               secretKeyRef:
                 name: git-credentials
                 key: password
+          - name: KEYSTORE_PWD
+            valueFrom:
+              secretKeyRef:
+                name: configserver-jks
+                key: KEYSTORE_PWD
+          - name: KEYSTORE_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: configserver-jks
+                key: KEYSTORE_SECRET
       volumes:
         - name: configserver-key
           secret:

@@ -66,7 +66,7 @@
     curl http://localhost:8888/decrypt -H 'Content-Type: text/plain' -d 'crifrado-paso-previo'
     ```
 
-# Labels
+## 4. Labels
 
 1. [Etiquetas recomandas](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/common-labels/)
 
@@ -90,6 +90,10 @@
     ```bash
     kubectl get deployment,svc,secrets,configmaps -l "app.kubernetes.io/part-of=configserver,app.kubernetes.io/managed-by=helm"
     ```
+
+
+
+
 
 
 

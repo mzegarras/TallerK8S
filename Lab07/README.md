@@ -188,79 +188,11 @@
 
 1. Crear proxy-reverse
     ```bash
-    kubectl apply -f lab04.yaml
+    kubectl apply -f ./06-proxyreverse/lab04.yaml
     ```
 
 
-### Desplegando en kubernetes
-
-
-1. Crear db service sin storage
-    ```bash
-    kubectl apply -f db.yaml
-
-    kubectl exec -it <<podId>> --sh
-
-    mysql -h localhost -u root -p
-
-    kubectl delete -f db.yaml
-
-    ```
-
-    ```bash
-    CREATE TABLE persons (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(30) NOT NULL,
-    lastname VARCHAR(30) NOT NULL,
-    email VARCHAR(50),
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    );
-    ```
-
-1. Crear db service con storage
-    ```bash
-    kubectl apply -f db-volume.yaml
-
-    kubectl exec -it <<podId>> --sh
-
-    mysql -h localhost -u root -p
-    show databases;
-    use db01;
-    show tables;
-
-    kubectl get pvc
-    kubectl get PersistentVolumeClaim
-    ```
-
-    ```bash
-    CREATE TABLE persons (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(30) NOT NULL,
-    lastname VARCHAR(30) NOT NULL,
-    email VARCHAR(50),
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    );
-    ```    
-
-
-    ### Db as service
-    1. [AzureSQL](https://azure.microsoft.com/es-es/services/sql-database/)
-    1. [CloudSQL](https://cloud.google.com/sql/docs/mysql?hl=es-419)
-    1. [RDS](https://aws.amazon.com/rds/)
-    
-
-1. Crear cache service
-    ```bash
-    kubectl apply -f cache.yaml
-    ```
-
-    ### Redis as service
-    1. [AWS](https://aws.amazon.com/es/redis/)
-    1. [Azure](https://azure.microsoft.com/en-us/services/cache/)
-    
-
-
-### Pruebas de stress
+## 10. Pruebas
 
 1. 200 Peticiones de consulta de clientes
     ```bash

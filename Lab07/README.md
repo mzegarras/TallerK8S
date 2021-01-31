@@ -178,6 +178,20 @@
     ```
 
 
+## 9. Desplegar proxy-reverse
+
+1. Crear config proxy-reverse
+    ```bash
+    kubectl create configmap config-nginx --from-file=./06-proxyreverse/nginx.conf
+    
+    ```
+
+1. Crear proxy-reverse
+    ```bash
+    kubectl apply -f lab04.yaml
+    ```
+
+
 ### Desplegando en kubernetes
 
 
@@ -245,17 +259,6 @@
     1. [Azure](https://azure.microsoft.com/en-us/services/cache/)
     
 
-
-
-1. Crear config proxy-reverse
-    ```bash
-    kubectl create configmap confnginx --from-file=./proxy/nginx.conf
-    ```
-
-1. Crear proxy-reverse
-    ```bash
-    kubectl apply -f lab04.yaml
-    ```
 
 ### Pruebas de stress
 

@@ -115,6 +115,35 @@
     * [RDS](https://aws.amazon.com/rds/)
 
 
+## 6. Crear cache service
+
+1. Crear credentials
+    ```bash
+    kubectl apply -f ./03-cache/1-secrets.yaml
+    ```
+
+1. Crear deployment + service
+    ```bash
+    kubectl apply -f ./03-cache/2-cache.yaml
+    ```
+
+1. Conectarse a redis
+    ```bash
+    kubectl exec -it <<pod-cache>> -- /bin/sh
+    redis-cli
+    auth password
+    monitor
+    ```    
+1. Cache como servicio
+
+    * [AWS](https://aws.amazon.com/es/redis/)
+    * [Azure](https://azure.microsoft.com/en-us/services/cache/)
+    * [Google](https://cloud.google.com/memorystore/pricing?hl=es-419)
+
+
+
+
+    
 
 ### Desplegando en kubernetes
 

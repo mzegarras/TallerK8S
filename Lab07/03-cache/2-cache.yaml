@@ -32,7 +32,20 @@ spec:
         - name: cache
           image: redis:4-alpine
           imagePullPolicy: Always
-          args: ["--requirepass", "password"]
+          args: ["--requirepass", "$(PASSWORD)"]
           ports:
             - containerPort: 6379
               name: cache
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 400m
+              memory: 256Mi #256Mi
+          env:
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cache-credentials
+                  key: redis_password 

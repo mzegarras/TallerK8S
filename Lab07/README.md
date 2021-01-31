@@ -141,7 +141,19 @@
     * [Google](https://cloud.google.com/memorystore/pricing?hl=es-419)
 
 
+## 6. Crear bus service
 
+1. Crear bus service
+    ```bash
+    kubectl apply -f ./04-bus/bus.yaml
+    ```
+
+1. Bus as service
+    * [AWS - SQS] (https://aws.amazon.com/sqs/)
+    * [AWS - SNS] (https://aws.amazon.com/sns/)
+    * [Azure - Service  BUS] (https://docs.microsoft.com/en-us/azure/service-bus-messaging/)
+    * [GCP - Pub-sub] (https://cloud.google.com/pubsub/docs/overview)
+    
 
     
 
@@ -231,17 +243,7 @@
     1. [Azure](https://azure.microsoft.com/en-us/services/cache/)
     
 
-1. Crear bus service
-    ```bash
-    kubectl apply -f ./04-bus/bus.yaml
-    ```
 
-    ### Bus as service
-    * [AWS - SQS] (https://aws.amazon.com/sqs/)
-    * [AWS - SNS] (https://aws.amazon.com/sns/)
-    * [Azure - Service  BUS] (https://docs.microsoft.com/en-us/azure/service-bus-messaging/)
-    * [GCP - Pub-sub] (https://cloud.google.com/pubsub/docs/overview)
-    
 
 1. Crear customers
     ```bash

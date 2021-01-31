@@ -141,7 +141,7 @@
     * [Google](https://cloud.google.com/memorystore/pricing?hl=es-419)
 
 
-## 6. Crear bus service
+## 7. Crear bus service
 
 1. Crear bus service
     ```bash
@@ -155,29 +155,32 @@
     * [GCP - Pub-sub] (https://cloud.google.com/pubsub/docs/overview)
     
 
-    
+
+## 8. Creando configuración común
+1. Crear bus service
+    ```bash
+    kubectl apply -f ./01-config-server/4-ms-configurations.yaml
+    ```
+
+## 9. Desplegar microservices
+1. Crear customers
+    ```bash
+    kubectl apply -f ./05-microservices/lab01.yaml
+    ```
+
+1. Crear application
+    ```bash
+    kubectl apply -f ./05-microservices/lab02.yaml
+    ```
+
+1. Crear security
+    ```bash
+    kubectl apply -f ./05-microservices/lab05.yaml
+    ```
+
 
 ### Desplegando en kubernetes
 
-1. Configurations settings
-    ```bash
-    cat <<EOF | kubectl apply -f -
-    apiVersion: "v1"
-    kind: "ConfigMap"
-    metadata:
-        name: "ms-configurations"
-        labels:
-            app: "ms-configurations"
-    data:
-        SERVER_CONFIG_ENABLED: "true"
-        SERVER_CONFIG_URL: "http://configserver:8888"
-        SERVER_CONFIG_FAIL_FAST: "true"
-        INITIAL_INTERVAL: "3000"
-        MULTIPLIER: "2.0"
-        MAXINTERVAL: "30000"
-        MAXATTEMPTS: "100"   
-    EOF
-    ```
 
 1. Crear db service sin storage
     ```bash
@@ -244,21 +247,6 @@
     
 
 
-
-1. Crear customers
-    ```bash
-    kubectl apply -f lab01.yaml
-    ```
-
-1. Crear application
-    ```bash
-    kubectl apply -f lab02.yaml
-    ```
-
-1. Crear security
-    ```bash
-    kubectl apply -f lab05.yaml
-    ```
 
 1. Crear config proxy-reverse
     ```bash

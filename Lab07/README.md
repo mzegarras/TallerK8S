@@ -71,15 +71,10 @@
 1. Etiquetas recomandas
 
 |Clave 	                        |Descripción	|Ejemplo 	|Tipo   	|
-|---	                        |---	|---	|---	|
+|---	                        |---	        |---	    |---	    |
 |app.kubernetes.io/name   	    |El nombre de la aplicación   	|mysql   	|String   	|
-|app.kubernetes.io/instance   	|Un nombre único que identifique la instancia de la aplicación   	|wordpress-abcxzy   	|   	String   	|
-|app.kubernetes.io/version   	|La versión actual de la aplicación (ej., la versión semántica, cadena hash de revisión, etc.)   	|5.7.21   	|String   	|
-|app.kubernetes.io/component   	|El componente dentro de la arquitectura   	|database   	|String   	|
-|app.kubernetes.io/part-of   	|El nombre de una aplicación de nivel superior de la cual es parte esta aplicación  	|wordpress   	|String   	|
-|app.kubernetes.io/managed-by  	|La herramienta usada para gestionar la operativa de una aplicación   	|helm   	|String   	|
 
-* [Referencia y ejemplos](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/common-labels/)
+1. [Referencia y ejemplos](https://kubernetes.io/es/docs/concepts/overview/working-with-objects/common-labels/)
 
 1. Consultar objetos
 

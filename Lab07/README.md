@@ -23,7 +23,7 @@
 1. Crear un secret para jks
 
     ```bash
-    kubectl create secret generic configserver-key --from-file=config-server.jks
+    kubectl create secret generic configserver-key --from-file=./01-config-server/config-server.jks
     kubectl get secret
     kubectl describe secret/configserver-key
     ```
@@ -191,11 +191,41 @@
     kubectl apply -f ./06-proxyreverse/lab04.yaml
     ```
 
+
+## 10. Pruebas
+
+1. Crear cliente síncrono
+
+    ```bash
+    curl -vvv --request POST \
+    --url http://35.221.52.214:8080/customers \
+    --header 'content-type: application/json' \
+    --header 'user-agent: vscode-restclient' \
+    --header 'x-api-force-sync: true' \
+    --data '{"customer": {"nombre": "name1","paterno": "lastname1222","password": "demo"}}'
+    ```
+
+1. Crear cliente asíncrono
+
+    ```bash
+    curl -vvv --request POST \
+    --url http://35.221.52.214:8080/customers \
+    --header 'content-type: application/json' \
+    --header 'user-agent: vscode-restclient' \
+    --header 'x-api-force-sync: false' \
+    --data '{"customer": {"nombre": "name1","paterno": "lastname1222","password": "demo"}}'
+    ```
+
+1. Consultar estado proceo
+    ```bash
+    curl --request GET --url http://35.221.52.214:8080/correlations/jDsaZSGAIZGf593O8vE0johzJTZCsxd6ZeVaRJSn
+    ```
+
 ## 10. Pruebas
 
 1. 200 Peticiones de consulta de clientes
     ```bash
-    fortio load -c 20 -qps 0 -n 200 -loglevel Warning http://130.211.221.110:8080/customers
+    fortio load -c 20 -qps 0 -n 200 -loglevel Warning http://35.221.52.214:8080/customers
      ```
 
 1. 40 transacciones / r=request, c=connections
@@ -207,6 +237,7 @@
         \"password\": \"demo\"
     }}"
     ```
+## 11. Autoscalamiento
 
 1. Agregar Liveness Probe
     ```bash
@@ -236,31 +267,11 @@
              failureThreshold: 3
      ```     
 
-1. Agregar Readiness Probe
+1. Agregar hpa
     ```bash
     kubectl autoscale deployment lab01 --cpu-percent=50 --min=1 --max=5
-    kubectl apply -f hpa.yaml
+    kubectl apply -f 07-hpa/hpa.yaml
 
     kubectl get hpa
-
-     ```     
-1. Creaar NS
-    ```bash
-     kubectl create ns dev
-     kubectl create ns qa
-     kubectl create ns prd
-
-     kubectl get ns
-
-     kubectl create secret generic configserver-key --namespace dev --from-file=config-server.jks
-     kubectl create secret generic configserver-key --namespace qa --from-file=config-server.jks
-     kubectl create secret generic configserver-key --namespace prd --from-file=config-server.jks
-
-     kubectl get secret -n dev
-     kubectl get secret -n qa
-     kubectl get secret -n prd
-
-     kubectl apply -f config-server.yaml -n dev
-     kubectl get deployments -n dev
-     ```    
-    
+    kubectl describe hpa/lab01-hpa
+     ```

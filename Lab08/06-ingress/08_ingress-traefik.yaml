@@ -16,7 +16,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1  
 kind: IngressRoute  
 metadata:  
-  name: ingress-applications
+  name: ingress-correlations
   namespace: default
 spec:  
   entryPoints:
@@ -32,7 +32,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1  
 kind: IngressRoute  
 metadata:  
-  name: ingress-applications
+  name: ingress-security
   namespace: default
 spec:  
   entryPoints:

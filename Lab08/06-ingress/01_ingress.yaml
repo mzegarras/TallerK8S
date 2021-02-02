@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress01
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /customers
+        pathType: Exact
+        backend:
+          serviceName: lab01
+          servicePort: 7070
+      - path: "/correlations/*"
+        pathType: Prefix
+        backend:
+            serviceName: lab02
+            servicePort: 7071         
+      - path: "/oauth/*"
+        pathType: Prefix
+        backend:
+          serviceName: lab05
+          servicePort: 9999          

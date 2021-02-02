@@ -1,0 +1,47 @@
+apiVersion: traefik.containo.us/v1alpha1  
+kind: IngressRoute  
+metadata:  
+  name: ingress-customers
+  namespace: default
+spec:  
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`customers.educalabs.com.pe`) && PathPrefix(`/customers`)
+    kind: Rule
+    services:
+    - name: lab01
+      port: 7070
+---
+apiVersion: traefik.containo.us/v1alpha1  
+kind: IngressRoute  
+metadata:  
+  name: ingress-applications
+  namespace: default
+spec:  
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`correlations.educalabs.com.pe`) && PathPrefix(`/correlations`)
+    kind: Rule
+    services:
+    - name: lab02
+      port: 7071
+
+---
+apiVersion: traefik.containo.us/v1alpha1  
+kind: IngressRoute  
+metadata:  
+  name: ingress-applications
+  namespace: default
+spec:  
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`security.educalabs.com.pe`) && PathPrefix(`/oauth`)
+    kind: Rule
+    services:
+    - name: lab05
+      port: 9999
+
+      

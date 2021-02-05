@@ -198,7 +198,7 @@
 
     ```bash
     curl -vvv --request POST \
-    --url http://35.221.52.214:8080/customers \
+    --url http://35.245.223.179:8080/customers \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
     --header 'x-api-force-sync: true' \
@@ -209,7 +209,7 @@
 
     ```bash
     curl -vvv --request POST \
-    --url http://35.221.52.214:8080/customers \
+    --url http://35.245.223.179:8080/customers \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
     --header 'x-api-force-sync: false' \
@@ -218,8 +218,13 @@
 
 1. Consultar estado proceo
     ```bash
+    curl --request GET --url http://35.221.52.214:8080/correlations/XBpFObYDnLVmWrkrcT4W7q9ZCwGkxeZQfv7byU68
+    ```
+1. Consultar estado proceo
+    ```bash
     curl --request GET --url http://35.221.52.214:8080/correlations/jDsaZSGAIZGf593O8vE0johzJTZCsxd6ZeVaRJSn
     ```
+
 
 ## 10. Pruebas
 

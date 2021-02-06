@@ -196,7 +196,7 @@
 
     ```bash
     curl -vvv --request POST \
-    --url http://34.117.107.129/customers \
+    --url http://34.117.15.255/customers \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
     --header 'x-api-force-sync: false' \
@@ -207,7 +207,7 @@
 
     ```bash
     curl -vvv --request POST \
-    --url http://34.117.107.129/customers \
+    --url http://34.117.15.255/customers \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
     --header 'x-api-force-sync: false' \
@@ -216,12 +216,12 @@
 
 1. Consultar estado
     ```bash
-        curl --request GET --url http://34.117.107.129/correlations/Re2YInYUPbElQjPXbeO54RaeoBe4aUJifilmGHsC
+        curl --request GET --url http://34.117.15.255/correlations/U6zhvuBpL7TCNTNczWdgz3R89Jy91CRKOZJAz6yB
     ```
 
 1. Client Credentials Grant: El recurso no requiere la autorización del usuario. 
 ```
-curl -vvv http://34.117.107.129/oauth/token \
+curl -vvv http://34.117.15.255/oauth/token \
     -d "grant_type=client_credentials" \
     -H "Content-type:application/x-www-form-urlencoded; charset=utf-8" \
     -u myclient:secret
@@ -243,7 +243,7 @@ curl -vvv http://34.117.107.129/oauth/token \
 
     ```bash
     curl -vvv --request POST \
-    --url http://34.117.15.255/customers \
+    --url http://34.117.107.129/customers \
     --header 'Host: customers.educalabs.com.pe' \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
@@ -254,7 +254,7 @@ curl -vvv http://34.117.107.129/oauth/token \
 1. Host: customers.educalabs.com.pe
  
     ```
-    curl -vvv http://34.117.15.255/oauth/token \
+    curl -vvv http://34.117.107.129/oauth/token \
         -H 'Host: security.educalabs.com.pe' \
         -H "Content-type: application/x-www-form-urlencoded" \
         -d'grant_type=password&username=user1&password=password' \
@@ -263,8 +263,8 @@ curl -vvv http://34.117.107.129/oauth/token \
 
 1. host: correlations.educalabs.com.pe
     ```bash
-        curl --request GET -H 'Host: correlations.educalabs.com.pe' \
-        --url http://34.117.15.255/correlations/YrkQ43BemftqL5z1Hi0RPMbRS5hjzF4yatXICjuW
+        curl -vvv --request GET -H 'Host: correlations.educalabs.com.pe' \
+        --url http://34.117.107.129/correlations/E9ppSq8MDIAR022N94g5JcyadlDSLyznHecspCD2
     ```
 
 
@@ -290,7 +290,7 @@ curl -vvv http://34.117.107.129/oauth/token \
 
     ```bash
     curl -vvv --request POST \
-    --url http://35.199.25.203/customers \
+    --url http://35.221.23.55/customers \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
     --header 'x-api-force-sync: true' \
@@ -323,7 +323,7 @@ curl -vvv http://34.117.107.129/oauth/token \
 
     ```bash
     curl -vvv --request POST \
-    --url http://35.221.58.234:8000/customers \
+    --url http://35.188.229.76:8000/customers \
     --header 'Host: customers.educalabs.com.pe' \
     --header 'content-type: application/json' \
     --header 'user-agent: vscode-restclient' \
@@ -333,13 +333,13 @@ curl -vvv http://34.117.107.129/oauth/token \
 
 1. Consultar estado
     ```bash
-    curl --header 'Host: correlations.educalabs.com.pe' --request GET --url http://35.221.58.234:8000/correlations/Re2YInYUPbElQjPXbeO54RaeoBe4aUJifilmGHsC
+    curl --header 'Host: correlations.educalabs.com.pe' --request GET --url http://35.188.229.76:8000/correlations/xg4JaOwx67WJ75OkDJgUZfEjMwDNK87ENX60IM56
     ```
 
 1.  Password
  
  ```
- curl -vvv http://35.221.58.234:8000/oauth/token \
+ curl -vvv http://35.188.229.76:8000/oauth/token \
       -H 'Host: security.educalabs.com.pe' \
       -H "Content-type: application/x-www-form-urlencoded" \
       -d'grant_type=password&username=user1&password=password' \

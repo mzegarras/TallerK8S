@@ -24,7 +24,7 @@
 1. Convertir [base64](https://www.base64decode.org/) credenciales
     ```bash
     echo -n 'mzegarra@gmail.com' | base64
-    echo -n 'git-credentials' | base64
+    echo -n '7HMQ7oCgWaV6gppJ4TRrb3czNvv3Ex' | base64
     echo 'cGFzc3dvcmQ=' | base64 --decode
     ```
 
@@ -42,6 +42,10 @@
     kubectl apply -n dev -f ./01-config-server/2-configserver-settings.yaml
     kubectl apply -n qa -f ./01-config-server/2-configserver-settings.yaml
     kubectl apply -n prd -f ./01-config-server/2-configserver-settings.yaml
+
+    kubectl apply -n dev -f ./01-config-server/3-config-server.yaml
+    kubectl apply -n qa -f ./01-config-server/3-config-server.yaml
+    kubectl apply -n prd -f ./01-config-server/3-config-server.yaml
 
     ```
 
@@ -67,7 +71,6 @@
     kubectl config set-context --current --namespace=dev
     kubectl apply -f ./01-config-server/3-config-server.yaml
     ```
-
 
 
 1. Pod shell

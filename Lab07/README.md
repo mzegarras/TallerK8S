@@ -230,12 +230,13 @@
 
 1. 200 Peticiones de consulta de clientes
     ```bash
-    fortio load -c 20 -qps 0 -n 200 -loglevel Warning http://35.221.52.214:8080/customers
+    fortio load -c 20 -qps 0 -n 200 -loglevel Warning http://35.221.23.55:8080/customers
+    fortio load -c 100 -qps 0 -n 200 -loglevel Warning http://35.221.23.55:8080/customers
      ```
 
 1. 40 transacciones / r=request, c=connections
     ```bash
-    siege -r 100 -c 2 -d 1  -v -H "X-Api-Force-Sync: false" --content-type 'application/json' "http://35.221.52.214:8080/customers POST {
+    siege -r 100 -c 2 -d 1  -v -H "X-Api-Force-Sync: false" --content-type 'application/json' "http://35.221.23.55:8080/customers POST {
     \"customer\": {
         \"nombre\": \"name1\",
         \"paterno\": \"lastname1222\",
@@ -258,6 +259,17 @@
             timeoutSeconds: 1
      ```
 
+    ```bash
+          livenessProbe:
+             httpGet:
+               path: /actuator/health
+               port: 7070
+             initialDelaySeconds: 30
+             periodSeconds: 10
+             timeoutSeconds: 10
+             successThreshold: 1
+             failureThreshold: 3
+     ```   
 
 1. Agregar Readiness Probe
     ```bash
@@ -279,4 +291,6 @@
 
     kubectl get hpa
     kubectl describe hpa/lab01-hpa
+
+    kubectl top pods
      ```

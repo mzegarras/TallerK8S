@@ -32,4 +32,4 @@ spec:
         pathType: Prefix
         backend:
           serviceName: lab05
-          servicePort: 9999          
+          servicePort: 9999

@@ -1,0 +1,114 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: monitoring
+  name: kube-state-metrics
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs: ["get"]
+- apiGroups: ["extensions"]
+  resources:
+  - deployments
+  - ingresses
+  resourceNames: ["kube-state-metrics"]
+  verbs: ["get", "update"]
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kube-state-metrics
+subjects:
+- kind: ServiceAccount
+  name: kube-state-metrics
+  namespace: monitoring
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
+rules:
+- apiGroups: [""]
+  resources:
+  - nodes/metrics
+  - nodes
+  - pods
+  - services
+  - resourcequotas
+  - replicationcontrollers
+  - limitranges
+  - persistentvolumeclaims
+  - persistentvolumes
+  - namespaces
+  - endpoints
+  - configmaps
+  - secrets
+  - configmaps
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["extensions"]
+  resources:
+  - daemonsets
+  - deployments
+  - replicasets
+  - ingresses
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["apps"]
+  resources:
+  - statefulsets
+  - replicasets
+  - deployments
+  - ingresses
+  - daemonsets
+  - replicasets
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["batch"]
+  resources:
+  - cronjobs
+  - jobs
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["autoscaling"]
+  resources:
+  - horizontalpodautoscalers
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["policy"]
+  resources:
+  - poddisruptionbudgets
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["storage.k8s.io"]
+  resources:
+  - storageclasses
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["certificates.k8s.io"]
+  resources:
+  - certificatesigningrequests
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kube-state-metrics
+  namespace: monitoring
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kube-state-metrics
+subjects:
+- kind: ServiceAccount
+  name: kube-state-metrics
+  namespace: monitoring

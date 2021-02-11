@@ -199,10 +199,7 @@ kubectl port-forward -n monitoring service/grafana-service 3000
 ```  
 
 
-
-
-
-
+## Dashboard
 
 
  https://grafana.com/grafana/dashboards/13105

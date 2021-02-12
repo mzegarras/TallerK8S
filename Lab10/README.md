@@ -17,49 +17,6 @@
     kubectl apply -f ./01-config-server/3-config-server.yaml
     ```
 
-=========
-# Desplegando containers kubernetes
-
-## 1. Tools
-1. [siege](https://github.com/JoeDog/siege) - Stress tool
-1. [fortio](https://github.com/fortio/fortio) - Stress tool
-
-## 2. Arquitectura
-
-![title](https://raw.githubusercontent.com/mzegarras/TallerK8S/main/Lab07/Arquitectura.png)
-
-
-## 3. Config server
-
-1. Crear un secret para jks
-
-    ```bash
-    kubectl create secret generic configserver-key --from-file=./01-config-server/config-server.jks
-    ```
-
-1. Convertir [base64](https://www.base64decode.org/) credenciales
-    ```bash
-    echo -n 'mzegarra@gmail.com' | base64
-    echo -n 'git-credentials' | base64
-    echo 'cGFzc3dvcmQ=' | base64 --decode
-    ```
-
-1. Crear secret git credentials
-    ```bash
-    kubectl apply -f ./01-config-server/1-gitcredentials.yaml
-    ```    
-
-1. Crear config maps
-    ```bash
-    kubectl apply -f ./01-config-server/2-configserver-settings.yaml
-    ```
-
-1. Desplegar config-server
-    ```bash
-    kubectl apply -f ./01-config-server/3-config-server.yaml
-    ```
-
-
 
 ## 5. Crear base de datos con volume
 

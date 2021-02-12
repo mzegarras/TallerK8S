@@ -74,7 +74,6 @@
     kubectl apply -f ./05-microservices/lab05.yaml
     ```
 
-
 ## Prometheus
 ```bash
 kubectl apply -f ns.yml
@@ -104,7 +103,6 @@ kubectl port-forward -n monitoring service/grafana-service 3000
 
 
 ## Dashboard
-
 
  https://grafana.com/grafana/dashboards/13105
  https://grafana.com/grafana/dashboards/13770

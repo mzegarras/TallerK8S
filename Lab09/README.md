@@ -13,7 +13,7 @@
     ```sh
     kubectl create secret generic configserver-key --from-file=./01-config-server/config-server.jks
     kubectl create secret generic configserver-key --namespace dev --from-file=./01-config-server/config-server.jks
-    kubectl create secret generic configserver-key --namespace qa --from-file=./01-config-server/config-server.jks
+    kubectl create secret generic configserver-key -n qa --from-file=./01-config-server/config-server.jks
     kubectl create secret generic configserver-key --namespace prd --from-file=./01-config-server/config-server.jks
 
     kubectl get secrets -n dev
@@ -65,7 +65,8 @@
     ```bash
     kubectl config view
     kubectl config get-contexts
-    kubectl config use-context gke_educalabs_us-east4-c_educadev01
+    kubectl config use-context gke_educalabs_us-east4-c_devops202101
+    
     kubectl config current-context
 
     kubectl config set-context --current --namespace=dev
@@ -83,8 +84,10 @@
     apt-get install -y dnsutils
     apt-get install -y iputils-ping
 
+    nslookup kubernetes
     nslookup kubernetes.default
     nslookup configserver
+        configserver.default.svc.cluster.local
     nslookup configserver.dev
 
     curl http://configserver:8888/clientes/default

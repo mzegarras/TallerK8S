@@ -17,7 +17,6 @@
     kubectl apply -f ./01-config-server/3-config-server.yaml
     ```
 
-
 ## 5. Crear base de datos con volume
 
 1. Crear volume
@@ -74,58 +73,6 @@
     ```bash
     kubectl apply -f ./05-microservices/lab05.yaml
     ```
-
-
-## 9. Desplegar proxy-reverse
-
-1. Crear proxy-reverse
-    ```bash
-    kubectl apply -f ./06-ingress/01_ingress.yaml
-    ```
-
-1. Listar ingress
-    ```bash
-    kubectl get ingress
-    ```
-
-## 10. Pruebas
-
-1. Crear cliente síncrono
-
-    ```bash
-    curl -vvv --request POST \
-    --url http://34.117.15.255/customers \
-    --header 'content-type: application/json' \
-    --header 'user-agent: vscode-restclient' \
-    --header 'x-api-force-sync: false' \
-    --data '{"customer": {"nombre": "name1","paterno": "lastname1222","password": "demo"}}'
-    ```
-
-1. Crear cliente asíncrono
-
-    ```bash
-    curl -vvv --request POST \
-    --url http://34.117.15.255/customers \
-    --header 'content-type: application/json' \
-    --header 'user-agent: vscode-restclient' \
-    --header 'x-api-force-sync: false' \
-    --data '{"customer": {"nombre": "name1","paterno": "lastname1222","password": "demo"}}'
-    ```
-
-1. Consultar estado
-    ```bash
-        curl --request GET --url http://34.117.15.255/correlations/U6zhvuBpL7TCNTNczWdgz3R89Jy91CRKOZJAz6yB
-    ```
-
-1. Client Credentials Grant: El recurso no requiere la autorización del usuario. 
-```
-curl -vvv http://34.117.15.255/oauth/token \
-    -d "grant_type=client_credentials" \
-    -H "Content-type:application/x-www-form-urlencoded; charset=utf-8" \
-    -u myclient:secret
-```
-
-
 
 
 ## Prometheus
